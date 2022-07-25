@@ -38,7 +38,7 @@ Upload() {
 # Make flashable zip
 MakeZip() {
     if [ ! -d $Any ]; then
-        git clone https://github.com/blazerpaul15/AnyKernel3 -b master $Any
+        git clone https://github.com/AndroidTanz/AnyKernel3 -b master $Any
         cd $Any
     else
         cd $Any
@@ -199,7 +199,7 @@ Clone_DTC() {
 HeadCommit="$(git log --pretty=format:'%h' -1)"
 export ARCH="arm64"
 export SUBARCH="arm64"
-export KBUILD_BUILD_USER="Paul"
+export KBUILD_BUILD_USER="AndroidTanz"
 export KBUILD_BUILD_HOST="builder"
 Defconfig="begonia_user_defconfig"
 KERNEL_NAME=$(cat "$MainPath/arch/arm64/configs/$Defconfig" | grep "CONFIG_LOCALVERSION=" | sed 's/CONFIG_LOCALVERSION="-*//g' | sed 's/"*//g' )
@@ -360,7 +360,7 @@ End() {
         if [ $UT = 1 ]; then
             TIME=$(echo "Build success in : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)")
             FILE=$ZIP
-            Caption="$TIME @blazerpaul15"
+            Caption="$TIME @AndroidTanz"
             Upload
         else
             echo "Build success in : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
@@ -371,7 +371,7 @@ End() {
         if [ $UT = 1 ]; then
             TIME=$(echo "Build fail in : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)")
             FILE="out/error.log"
-            Caption="$TIME Check this @blazerpaul15"
+            Caption="$TIME Check this @AndroidTanz"
             Upload
         else
             echo "Build fail in : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
